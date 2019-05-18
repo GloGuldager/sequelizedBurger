@@ -23,7 +23,8 @@
         <li>{{this.burger_name}}</li>
         <div class="wallpaperFull">
           {{!-- Button sends this.id back to the server --}}
-          <form action="burgers/updateOne/{{this.id}}?_method=PUT" method="POST" style="padding-top:20px; padding-bottom:20px;">
+          <form style="padding-top:20px; padding-bottom:20px;"></form>
+          {{!-- action="burgers/updateOne/{{this.id}}?_method=PUT" method="POST" style="padding-top:20px; padding-bottom:20px;"> --}}
             <button type="submit" class="btn devourButton">DEVOUR IT!</button>
           </form>
         </div>
