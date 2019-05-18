@@ -3,9 +3,9 @@ module.exports = function(sequelize, DataTypes) {
     burger_name: DataTypes.STRING,
     devoured: {
       type: DataTypes.BOOLEAN,
-      defaultValue: false
+      defaultValue: false,
+      createdAt: DataTypes.TIMESTAMP
     }
-      // createdAt: DataTypes.TIMESTAMP
   });
   return Burger;
 };
