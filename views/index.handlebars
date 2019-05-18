@@ -1,0 +1,45 @@
+<header>
+  <h1 class="text-center burgerTitle">GottaGo-Burger</h1>
+
+    <div class="formDiv align-center">
+    <form class="create-update-form" action="burgers/insertOne" method="POST">
+      <div class="form-group" style="width:auto; resize:both">
+        <textarea placeholder="Enter a burger you want to eat, and then click the submit button." id="burgername"
+          name="burger_name" style="margin: 0px; width: 225px; resize: both; overflow: auto;"></textarea>
+        <br>
+        <button type="submit" class="btn btn-lg btn-primary submitButton">Submit</button>
+      </div>
+    </form>
+  </div>
+</header>
+
+<div class="container-fluid" style="width:80vw">
+
+  <div class="row">
+    <div class="col-sm-6" id="left-bg" style="background-color:white; margin: 0, 0, 15, 0">
+    <ol class="customcounter1">Ready to Eat!
+      {{#each burgers}} {{#unless this.devoured}}
+      <div class="notDevoured">
+        <li>{{this.burger_name}}</li>
+        <div class="wallpaperFull">
+          {{!-- Button sends this.id back to the server --}}
+          <form action="burgers/updateOne/{{this.id}}?_method=PUT" method="POST" style="padding-top:20px; padding-bottom:20px;">
+            <button type="submit" class="btn devourButton">DEVOUR IT!</button>
+          </form>
+        </div>
+      </div>
+      {{/unless}} {{/each}}
+    </ol>
+    </div>
+    <div class="col-sm-6" style="background-color: #df9397;">
+    <ol class="customcounter2">All Gone!
+      {{#each burgers}} {{#if this.devoured}}
+      <div class="wallpaperDevoured">
+        <li>{{this.burger_name}}</li>
+      </div>
+      {{/if}} {{/each}}
+    </ol>
+    </div>
+  </div>
+</div>
+
