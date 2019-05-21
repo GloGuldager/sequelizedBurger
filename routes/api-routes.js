@@ -14,7 +14,7 @@ module.exports = function(app) {
 
   // GET route for getting all of the posts
   app.get("/api/burgers", function(req, res) {
-      db.Burger.findAll({})
+      db.burgers.findAll({})
         .then(function(dbBurger) {
           res.json(dbBurger);
         });
@@ -23,14 +23,14 @@ module.exports = function(app) {
 
   // POST route for saving a new post
   app.post("/api/burgers", function(req, res) {
-    db.Burger.create(req.body.burger_name).then(function(dbBurger) {
+    db.burgers.create(req.body.burger_name).then(function(dbBurger) {
       res.json(dbBurger);
     });
   });
 
   // DELETE route for deleting posts
   app.delete("/api/burgers/:id", function(req, res) {
-    db.Burger.destroy({
+    db.burgers.destroy({
       where: {
         id: req.params.id
       }
@@ -41,7 +41,7 @@ module.exports = function(app) {
 
   // PUT route for updating posts
   app.put("/api/burgers", function(req, res) {
-    db.Burger.update(
+    db.burgers.update(
       req.params.id,
       {
         where: {
