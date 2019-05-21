@@ -1,12 +1,14 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function() {
   $(".change-devoured").on("click", function(event) {
-    var id = $(this).data("id");
-    var newDevoured = $(this).data("newdevoured");
+      // Make sure to preventDefault on a submit event.
+      event.preventDefault();
+      var id = $(this).data("id");
+      var newDevoured = $(this).data("newdevoured");
 
-    var newDevouredState = {
-      devoured: newDevoured
-    };
+      var newDevouredState = {
+        devoured: newDevoured
+      };
 
     // Send the PUT request.
     $.ajax("/api/burgers/" + id, {
@@ -24,13 +26,13 @@ $(function() {
   // devourButton
 
 
-  $(".create-form").on("submit", function(event) {
+  $(".create-update-form").on("submit", function(event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
     var newBurger = {
 
-      name: $("#devourButton").val().trim(),
+      name: $("#burgername").val().trim(),
       // devoured: $("[name=devoured]:checked").val().trim()
     };
     console.log(newBurger);

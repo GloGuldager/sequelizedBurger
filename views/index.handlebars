@@ -2,7 +2,8 @@
   <h1 class="text-center burgerTitle">GottaGo-Burger</h1>
 
     <div class="formDiv align-center">
-    <form class="create-update-form" action="burgers/insertOne" method="POST">
+    <form class="create-update-form">
+    {{!-- action="burgers/insertOne" method="POST"> --}}
       <div class="form-group" style="width:auto; resize:both">
         <textarea placeholder="Enter a burger you want to eat, and then click the submit button." id="burgername"
           name="burger_name" style="margin: 0px; width: 225px; resize: both; overflow: auto;"></textarea>
@@ -23,9 +24,10 @@
         <li>{{this.burger_name}}</li>
         <div class="wallpaperFull">
           {{!-- Button sends this.id back to the server --}}
-          <form style="padding-top:20px; padding-bottom:20px;"></form>
+          <form style="padding-top:20px; padding-bottom:20px;">
           {{!-- action="burgers/updateOne/{{this.id}}?_method=PUT" method="POST" style="padding-top:20px; padding-bottom:20px;"> --}}
-            <button type="submit" class="btn devourButton">DEVOUR IT!</button>
+            <button class="change-devoured" data-id="{{id}}" data-newdevoured="{{this.devoured}}">DEVOUR IT!</button>
+
           </form>
         </div>
       </div>

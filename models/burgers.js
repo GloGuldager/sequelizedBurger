@@ -1,12 +1,11 @@
-module.exports = function(sequelize, DataTypes) {
-  var Burger = sequelize.define("Burger", {
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+  const burgers = sequelize.define('burgers', {
     burger_name: DataTypes.STRING,
-    devoured: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-      createdAt: DataTypes.TIMESTAMP
-    }
-  });
-  return Burger;
+    devoured: DataTypes.BOOLEAN
+  }, {});
+  burgers.associate = function(models) {
+    // associations can be defined here
+  };
+  return burgers;
 };
-
